@@ -3,8 +3,9 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 from util import read_questions
 import click
 import locale
+import random
 
-
+random.seed(4131)
 locale.setlocale(locale.LC_ALL, "de_DE.UTF-8")
 
 
@@ -14,14 +15,21 @@ def cli():
 
 
 @click.command()
-def generate_cards():
+@click.option(
+    "--debug",
+    is_flag=True,
+    help="When set, cards and options/answers are not shuffled. Also a 1cm grid is overlayed over cards, centered at the page center.",
+)
+def generate_cards(debug):
     """Produce a content.tex file from reading questions.txt and applying the card.tex template"""
     env = Environment(loader=PackageLoader("clever10"), autoescape=select_autoescape())
-    questions = read_questions("./questions.txt")
+    questions = read_questions("./questions.txt", debug)
+    if not debug:
+        random.shuffle(questions)
     template = env.get_template("card.tex")
     with open("./content.tex", "w") as f:
         for question in questions:
-            tex = template.render(question)
+            tex = template.render({**question, "debug": debug})
             f.write(tex)
             f.write("\n")
     click.echo(f"Wrote {len(questions)} questions to content.tex!")

@@ -65,7 +65,8 @@
   \draw[-] (part8) -- (answer8);
   \draw[-] (part9) -- (answer9);
 
-% debugging grid
-%\draw[step=1.0cm,draw=red] ($(question)+(-12,-12)$) grid (12,12);
+{% if debug %}
+\draw[step=1.0cm,draw=red] ($(question)+(-12,-12)$) grid (12,12);
+{% endif %}
 \end{tikzpicture}
 \end{frame}
