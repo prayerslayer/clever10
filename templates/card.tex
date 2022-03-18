@@ -1,0 +1,71 @@
+\begin{frame}
+  \centering
+  \begin{tikzpicture}[remember picture, overlay]
+
+  \fill[fill=white] (current page.center) circle (3.3cm);
+
+  \node[questionnode] (question) at (current page.center) { {{question}} };
+
+  % nodes around the central question node, defined with polar coordinates angle:radius
+
+  {% for part in parts %}
+  {% if part.type == 'text' %}
+  \node[partnode] (part{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:2.25cm)$) { {{part.content}} };
+  {% elif part.type == 'image' %}
+  \node[circle,inner xsep=0cm, inner ysep=0.55cm, fill=white] (part{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:2.25cm)$)   {};
+  \path[fill overzoom image={{part.content}}] ($(question)+(90+{{loop.index0}}*36:2.25cm)$) circle (0.5cm);
+  {% else %}
+  \node[partnode,draw=red,fill=red!50] (part{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:2.25cm)$)  {Wrong type};
+  {% endif %}
+  {% endfor %}
+
+  {% for answer in answers %}
+  {% if answer.type == 'text' %}
+  \node[answernode] (answer{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:4.7cm)$)  { {{answer.content}} };
+  {% elif answer.type == 'image' %}
+  \node[answernode] (answer{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:4.7cm)$)   {};
+  \path[fill overzoom image={{answer.content}}] ($(question)+(90+{{loop.index0}}*36:4.7cm)$) circle (0.5cm);
+  {% else %}
+  \node[answernode,draw=red,fill=red!50] (answer{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:4.7cm)$)  {Wrong type};
+  {% endif %}
+  {% endfor %}
+
+
+  % simulate rounded borders, maybe cut off after print there
+  \draw[dotted]  ($(question)+(-8.6cm,0)$) -- ($(question)+(0, -8.6cm)$);
+  \draw[dotted]  ($(question)+(-8.6cm,0)$) -- ($(question)+(0, 8.6cm)$);
+  \draw[dotted]  ($(question)+(10.6cm,0)$) -- ($(question)+(0, 10.6cm)$);
+  \draw[dotted]  ($(question)+(10.6cm,0)$) -- ($(question)+(0, -10.6cm)$);
+
+  \node[partnode] (logo) at ($(current page.north)+(4cm,-0.2cm)$) {\large \bfseries \textcolor{black}{CLEVER}\textcolor{white}{10}};
+
+  \pgfmathtruncatemacro\cardside{1+int(mod((\insertframenumber - 1),2))}
+  \pgfmathtruncatemacro\cardno{1+int((\insertframenumber - 1)/2)}
+  \node[answernode] (counter) at ($(current page.south)+(4cm,0.2cm)$) {$\cardno^{\cardside}$};
+
+  \draw[-] (question) -- (part0);
+  \draw[-] (question) -- (part1);
+  \draw[-] (question) -- (part2);
+  \draw[-] (question) -- (part3);
+  \draw[-] (question) -- (part4);
+  \draw[-] (question) -- (part5);
+  \draw[-] (question) -- (part6);
+  \draw[-] (question) -- (part7);
+  \draw[-] (question) -- (part8);
+  \draw[-] (question) -- (part9);
+
+  \draw[-] (part0) -- (answer0);
+  \draw[-] (part1) -- (answer1);
+  \draw[-] (part2) -- (answer2);
+  \draw[-] (part3) -- (answer3);
+  \draw[-] (part4) -- (answer4);
+  \draw[-] (part5) -- (answer5);
+  \draw[-] (part6) -- (answer6);
+  \draw[-] (part7) -- (answer7);
+  \draw[-] (part8) -- (answer8);
+  \draw[-] (part9) -- (answer9);
+
+% debugging grid
+%\draw[step=1.0cm,draw=red] ($(question)+(-12,-12)$) grid (12,12);
+\end{tikzpicture}
+\end{frame}

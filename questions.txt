@@ -1,0 +1,35 @@
+A regular question with all text.
+Answer1;Option1
+Answer2;Option2
+Answer3;Option3
+Answer4;Option4
+Answer5;Option5
+Answer6;Option6
+Answer7;Option7
+Answer8;Option8
+Answer9;Option9
+Answer10;Option10
+
+A true/false question (images!).
+[img:T];Option1
+[img:T];Option2
+[img:T];Option3
+[img:F];Option4
+[img:F];Option5
+[img:T];Option6
+[img:T];Option7
+[img:T];Option8
+[img:F];Option9
+[img:F];Option10
+
+Images can be anywhere.
+Answer1;[img:T]
+Answer2;[img:T]
+Answer3;[img:T]
+Answer4;[img:F]
+Answer5;[img:F]
+Answer6;[img:T]
+Answer7;[img:T]
+Answer8;[img:T]
+Answer9;[img:F]
+Answer10;[img:F]

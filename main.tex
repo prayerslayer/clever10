@@ -1,0 +1,33 @@
+\documentclass{beamer}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\graphicspath{{figures/wrd}}
+
+\usepackage{tikz}
+\usetikzlibrary{fit}
+\usetikzlibrary{calc}
+\usepackage[skins]{tcolorbox}
+
+\usepackage[orientation=landscape,size=custom,width=11.1,height=11.1,scale=0.25,debug]{beamerposter}
+\setbeamersize{text margin left=0mm,text margin right=0mm}
+\definecolor{bgGray}{rgb}{0.8,0.8,0.8}
+\setbeamercolor{background canvas}{bg=bgGray}
+%\setbeamertemplate{footline}[frame number]
+\beamertemplatenavigationsymbolsempty
+
+\usepackage[sfdefault,book]{FiraSans} %% option 'sfdefault' activates Fira Sans as the default text font
+\usepackage[T1]{fontenc}
+\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}
+
+\tikzset{
+questionnode/.style={circle, draw=black, fill=white, thick, minimum size=2mm, align=center,text centered, text width=2.0cm,font=\large},
+partnode/.style={rectangle, minimum size=2mm, align=center,text centered, text width=2cm},
+answernode/.style={circle, inner sep=0cm, minimum size=2mm, align=center, text centered, text width=1.6cm, font=\small}}
+
+\begin{document}
+
+\input{content.tex}
+
+\end{document}
