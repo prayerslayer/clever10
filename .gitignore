@@ -1,4 +1,11 @@
 .DS_Store
+content.tex
+
+*.nav
+*.out
+*.aux
+*.snm
+*.toc
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

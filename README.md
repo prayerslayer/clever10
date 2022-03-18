@@ -60,7 +60,7 @@ The typesetting is done by LaTeX, so whatever you write as question text, option
 
 1. `pip3 install -r requirements.txt` (installs dependencies)
 2. `python3 clever10.py generate-cards`
-3. Take `main.tex`, `content.tex` and the `images` folder, upload them to [Overleaf](https://overleaf.com) and download PDF. Or alternatively, compile `main.tex` on your own system.
+3. Take `main.tex`, `content.tex` and the `images` folder, upload them to [Overleaf](https://overleaf.com) and download PDF. Or alternatively, compile `main.tex` on your own system (`pdflatex main && pdflatex main` if you have all dependencies installed).
 
 ## License
 
