@@ -18,14 +18,18 @@ def cli():
 
 @click.command()
 @click.option(
+    '--questions-file',
+    default='./questions.txt'
+)
+@click.option(
     "--debug",
     is_flag=True,
     help="When set, cards and options/answers are not shuffled. Also a 1cm grid is overlayed over cards, centered at the page center.",
 )
-def generate_cards(debug):
+def generate_cards(questions_file, debug):
     """Produce a content.tex file from reading questions.txt and applying the card.tex template"""
     env = Environment(loader=PackageLoader("clever10"), autoescape=select_autoescape())
-    questions = read_questions("./questions.txt", debug)
+    questions = read_questions(questions_file, debug)
     if not debug:
         random.shuffle(questions)
     template = env.get_template("card.tex")
@@ -38,9 +42,13 @@ def generate_cards(debug):
 
 
 @click.command()
-def list_questions():
+@click.option(
+    '--questions-file',
+    default='./questions.txt'
+)
+def list_questions(questions_file):
     questions = sorted(
-        map(lambda x: x["question"], read_questions("./questions.txt")),
+        map(lambda x: x["question"], read_questions(questions_file, False)),
         key=cmp_to_key(locale.strcoll),
     )
     for question in questions:
@@ -51,9 +59,13 @@ def list_questions():
 
 
 @click.command()
-def true_false_dist():
+@click.option(
+    '--questions-file',
+    default='./questions.txt'
+)
+def true_false_dist(questions_file):
     """For true/false questions, outputs distribution of ratio between true and false answers."""
-    questions = read_questions("./questions.txt", False)
+    questions = read_questions(questions_file, False)
     labels = list(map(lambda x: f"{x} T / {10-x} F", range(11)))
     dist = list(map(lambda x: 0, range(len(labels))))
 

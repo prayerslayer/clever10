@@ -1,6 +1,8 @@
 .DS_Store
 content.tex
 
+salaisuus/**/*
+
 *.nav
 *.out
 *.aux
