@@ -1,9 +1,11 @@
 from functools import cmp_to_key
 from jinja2 import Environment, PackageLoader, select_autoescape
-from util import read_questions
+from util import read_questions, get_yes_no_ratio
 import click
 import locale
 import random
+import termplotlib as tpl
+
 
 random.seed(4131)
 locale.setlocale(locale.LC_ALL, "de_DE.UTF-8")
@@ -45,12 +47,29 @@ def list_questions():
         click.echo(question)
     click.echo("---")
     total = len(questions)
-    completion = "" if total % 2 == 0 else "-> INCOMPLETE!!"
-    click.echo(f"{total} questions / {total/2} cards {completion}")
+    click.echo(f"{total} questions / {total/2} cards")
+
+
+@click.command()
+def true_false_dist():
+    """For true/false questions, outputs distribution of ratio between true and false answers."""
+    questions = read_questions("./questions.txt", False)
+    labels = list(map(lambda x: f"{x} T / {10-x} F", range(11)))
+    dist = list(map(lambda x: 0, range(len(labels))))
+
+    for question in questions:
+        [yes, no] = get_yes_no_ratio(question)
+        if yes > 0 or no > 0:
+            dist[yes] += 1
+
+    fig = tpl.figure()
+    fig.barh(dist, labels)
+    fig.show()
 
 
 cli.add_command(generate_cards)
 cli.add_command(list_questions)
+cli.add_command(true_false_dist)
 
 if __name__ == "__main__":
     cli()
