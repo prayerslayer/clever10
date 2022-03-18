@@ -1,6 +1,6 @@
 # CLEVER10
 
-Custom cards for [Piatnik's Smart 10](https://www.piatnik.com/spiele/marken/smart-10/smart-10) quiz game!
+Custom cards for [Piatnik's Smart 10](https://www.piatnik.com/spiele/marken/smart-10/smart-10) quiz game! [DEMO](demo.pdf)
 
 **CAVEATS**
 
