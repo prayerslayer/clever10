@@ -1,20 +1,29 @@
 import random
 
 
-def option_or_answer_to_dict(option_or_answer):
-    if option_or_answer.startswith("[img:"):
-        return {"type": "image", "content": option_or_answer[5:-1]}
-    else:
+def content_type_to_dict(option_or_answer):
+    if not option_or_answer.startswith("["):
         return {"type": "text", "content": option_or_answer}
 
+
+    if option_or_answer.startswith("[img:"):
+        return {"type": "image", "content": option_or_answer[5:-1]}
+    elif option_or_answer.startswith("[color:"):
+        hex_code = option_or_answer[7:-1]
+        red = int(hex_code[0:2], 16)
+        green = int(hex_code[2:4], 16)
+        blue = int(hex_code[4:6], 16)
+        return {"type": "color", "content": [red, green, blue]}
+
+    raise Exception("Unknown content type")
 
 def parse_question(question_str, debug):
     question = question_str[0]
     options = list(
-        map(lambda x: option_or_answer_to_dict(x.split(";")[1]), question_str[1:])
+        map(lambda x: content_type_to_dict(x.split(";")[1]), question_str[1:])
     )
     answers = list(
-        map(lambda x: option_or_answer_to_dict(x.split(";")[0]), question_str[1:])
+        map(lambda x: content_type_to_dict(x.split(";")[0]), question_str[1:])
     )
 
     ordering = random.sample(range(10), 10) if not debug else range(10)
