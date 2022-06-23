@@ -8,6 +8,8 @@ salaisuus/**/*
 *.aux
 *.snm
 *.toc
+*.bbl
+*.blg
 main.pdf
 
 # Byte-compiled / optimized / DLL files
