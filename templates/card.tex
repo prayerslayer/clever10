@@ -4,7 +4,7 @@
 
   \fill[fill=white] (current page.center) circle (3.3cm);
 
-  \node[questionnode] (question) at (current page.center) { {{question}} };
+  \node[questionnode,draw={{ctx.color}}] (question) at (current page.center) { {{question}} };
 
   % nodes around the central question node, defined with polar coordinates angle:radius
 
