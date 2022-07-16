@@ -47,7 +47,7 @@ def generate_cards(questions_file, seed, debug):
 )
 def list_questions(questions_file):
     questions = sorted(
-        map(lambda x: x["question"], read_questions(questions_file, False)),
+        map(lambda x: x["question"], read_questions(questions_file, 0, False)),
         key=cmp_to_key(locale.strcoll),
     )
     for question in questions:
