@@ -5,7 +5,7 @@ Custom cards for [Piatnik's Smart 10](https://www.piatnik.com/spiele/marken/smar
 **CAVEATS**
 
 * Obviously not an official project by Piatnik
-* **UNVERIFIED** if it actually works, I didn't try to print the cards yet
+
 
 ## Installation
 
@@ -19,9 +19,14 @@ Your questions go into a file `questions.txt`. A question consists of:
 * 10 options (go around the large circle)
 * 10 answers (go around the options and are hidden as per game mechanics)
 
+### Questions Format
+
 Describe a question in the following format in the file:
 
 ```
+# This is a comment, the line will be ignored.
+# Empty lines are skipped.
+
 This is the question text.
 Answer1;Option1
 Answer2;Option2
@@ -37,24 +42,19 @@ Answer10;Option10
 
 As you can see, the first line is the question and the 10 following lines are option/answer pairs separated by a semicolon `;`. Hence, 11 consecutive non-empty lines in the file will be interpreted as one question. Don't worry about shuffling answers or questions, the card generation code will do that for you.
 
-It is possible to use images for options or answers (but not the question text). To do so, place them in the `images` folder and reference them with `[img:FILENAME_WITHOUT_EXTENSION]`. Images will be cropped by an appropriately-sized circle. Incidentally, this is also how the true/false question type works:
+The typesetting is done by LaTeX, so whatever you write as question text, option or answer will be in the end copied into a larger LaTeX file and compiled. This means that on the one hand, you can go crazy with, e.g., formulae: `$e=mc^2$` will work just fine. On the other hand, take care to escape special LaTeX characters with a backslash, like, e.g., `\&`, `\%`, etc. clever10 includes a command `find-bad-chars` which prints all questions with special LaTeX characters.
 
-```
-Decide if true or false.
-[img:T];Statement1
-[img:T];Statement2
-[img:T];Statement3
-[img:F];Statement4
-[img:F];Statement5
-[img:T];Statement6
-[img:T];Statement7
-[img:T];Statement8
-[img:F];Statement9
-[img:F];Statement10
-```
+### Answer/Option Types
 
-The typesetting is done by LaTeX, so whatever you write as question text, option or answer will be in the end copied into a larger LaTeX file and compiled. This means that on the one hand, you can go crazy with, e.g., formulae: `$e=mc^2$` will work just fine. On the other hand, take care to escape special LaTeX characters with a backslash, like, e.g., `\&`, `\%`, etc.
+Clever10 supports some special non-text answer/option types. These are currently images (`[img:PATH]`) and colors (`[color:HEXCODE]`).
 
+To use images for options or answers place them in the `images` folder and reference them with `[img:FILENAME_WITHOUT_EXTENSION]`. Images will be cropped by an appropriately-sized circle. Incidentally, this is also how the true/false question type works.
+
+To use colors reference them with `[color:HEXCODE]`, where `HEXCODE` is, e.g., `ff0000` for red.
+
+### Question Categories
+
+Clever10 supports categories of questions, i.e., groups of differently formatted questions. The exact format differences are called a "context". A context is specified by a special string between two questions in `questions.txt`. Specifically, `key:value` pairs in curly brackets. Currently only the color of the circle (as [`dvipsnames` color names](https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX)) is supported, e.g., `{color:MidnightBlue}`.
 
 ## Generating the Cards
 
