@@ -34,6 +34,20 @@ Answer8;[img:T]
 Answer9;[img:F]
 Answer10;[img:F]
 
+{color:MidnightBlue}
+
+Use categories to visually group content.
+Answer1;Option1
+Answer2;Option2
+Answer3;Option3
+Answer4;Option4
+Answer5;Option5
+Answer6;Option6
+Answer7;Option7
+Answer8;Option8
+Answer9;Option9
+Answer10;Option10
+
 Colors can be specified directly.
 [color:00A6A6];[color:A63D00]
 [color:2BAB2B];[color:AB1A62]
