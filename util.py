@@ -29,7 +29,7 @@ def parse_question(question_str, ctx, seed, debug):
         map(lambda x: content_type_to_dict(x.split(";")[0]), question_str[1:])
     )
 
-    ordering = random.sample(range(10), 10) if not debug or seed > 0 else range(10)
+    ordering = random.sample(range(10), 10) if seed > 0 else range(10)
 
     options = [options[i] for i in ordering]
     answers = [answers[i] for i in ordering]
@@ -62,14 +62,14 @@ def read_questions(path_to_file, seed, debug):
                     continue
                 #EOF
                 if line == "":
+                    if seed > 0:
+                        random.shuffle(questions)
                     return questions
 
                 question_str.append(line.strip())
                 cntr -= 1
             questions.append(parse_question(question_str, context, seed, debug))
-    if not debug or seed > 0:
-        random.shuffle(questions)
-    return questions
+    # Not going here hopefully
 
 
 def get_yes_no_ratio(question):
