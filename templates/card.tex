@@ -24,15 +24,15 @@
 
   {% for answer in answers %}
   {% if answer.type == 'text' %}
-  \node[answernode] (answer{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:4.2cm)$)  { {{answer.content}} };
+  \node[answernode] (answer{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:4.7cm)$)  { {{answer.content}} };
   {% elif answer.type == 'image' %}
-  \node[answernode] (answer{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:4.2cm)$)   {};
-  \path[fill overzoom image={{answer.content}}] ($(question)+(90+{{loop.index0}}*36:4.2cm)$) circle (0.3cm);
+  \node[answernode] (answer{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:4.7cm)$)   {};
+  \path[fill overzoom image={{answer.content}}] ($(question)+(90+{{loop.index0}}*36:4.7cm)$) circle (0.4cm);
   {% elif answer.type == 'color' %}
-  \node[circle,inner xsep=0cm, inner ysep=0.55cm, fill=bgGray] (answer{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:4.2cm)$)   {};
-  \path[fill={rgb,255:red,{{answer.content[0]}}; green,{{answer.content[1]}}; blue,{{answer.content[2]}}}] ($(question)+(90+{{loop.index0}}*36:4.2cm)$) circle (0.3cm);
+  \node[circle,inner xsep=0cm, inner ysep=0.55cm, fill=bgGray] (answer{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:4.7cm)$)   {};
+  \path[fill={rgb,255:red,{{answer.content[0]}}; green,{{answer.content[1]}}; blue,{{answer.content[2]}}}] ($(question)+(90+{{loop.index0}}*36:4.7cm)$) circle (0.4cm);
   {% else %}
-  \node[answernode,draw=red,fill=red!50] (answer{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:4.2cm)$)  {Wrong type};
+  \node[answernode,draw=red,fill=red!50] (answer{{loop.index0}})  at ($(question)+(90+{{loop.index0}}*36:4.7cm)$)  {Wrong type};
   {% endif %}
   {% endfor %}
 
