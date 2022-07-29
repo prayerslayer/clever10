@@ -6,6 +6,10 @@ Custom cards for [Piatnik's Smart 10](https://www.piatnik.com/spiele/marken/smar
 
 * Obviously not an official project by Piatnik
 
+## Printing
+
+* Use heavy paper, at least 300 grams/square-meter.
+
 
 ## Installation
 
