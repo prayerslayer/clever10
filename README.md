@@ -2,9 +2,12 @@
 
 Custom cards for [Piatnik's Smart 10](https://www.piatnik.com/spiele/marken/smart-10/smart-10) quiz game! [DEMO](demo.pdf)
 
+So, is this Very Easy? The answer is: Maybe?! This project alleviates only the problem of card layout (to some extent, see below). You still have the problems of content creation (someone needs to come up with questions and answer options) and card production (printing, cutting).
+
 **CAVEATS**
 
 * Obviously not an official project by Piatnik
+* In my one try I didn't get the sizing of the cards 100% right
 
 ## Installation
 
@@ -66,22 +69,21 @@ Clever10 supports categories of questions, i.e., groups of differently formatted
 
 ### Printing
 
+Use heavy paper, around 300 grams/square-meter.
 
-Use heavy paper, at least 300 grams/square-meter.
-
-The generated PDF technically allows to be printed double-sided as the original Smart10. Put 2 cards on each DIN A4 page, rotate every 3rd and 4th by 180 degree to make the cut marks align. This is doable, e.g., in Adobe Acrobat. However I could not persuade the printers I've used to print cards _exactly_ behind each other. Not for many pages anyway. Thus I recommend to print one-sided, sadly. (2 per DIN A4 page)
+The generated PDF technically allows to be printed double-sided as the original Smart10. Put 2 cards on one DIN A4 page, rotate every 3rd and 4th by 180 degree to make the cut marks align. This is doable, e.g., in Adobe Acrobat. However I could not persuade the printers I've used to print cards _exactly_ behind each other. Not for many pages anyways. Thus I recommend to print one-sided, sadly. (2 per DIN A4 page)
 
 ### Cutting
 
-Cutting the cards is some effort but doable with basic equipment. 6 cuts with a swingline paper trimmer and 8 scissor cuts per page (assuming 2 cards per page).
+Cutting the cards is some effort but doable with basic equipment. 6 cuts with a swingline paper trimmer and 8 scissor cuts per page (assuming 2 cards per page). You could also pay a person to do this in your local copyshop.
 
 ### Packaging
 
-Make a shallow box template at [template maker](https://www.templatemaker.nl/en/shallowbox/) with appropriate dimensions. The cards are 11cm x 11cm, so a bit more length and height than that. Width (thickness) depends on how many cards you have and the paper weight used. With 100 cards on 300g/m^2 paper you're looking at a staple of around 3 cm.
+Make a shallow box template at [template maker](https://www.templatemaker.nl/en/shallowbox/) with appropriate dimensions. The cards are 10.5cm x 10.5cm, so a bit more length and height than that. Width (thickness) depends on how many cards you have and the paper weight used. With 100 cards on 300g/m^2 paper you're looking at a staple of around 3 cm.
 
 Ideally you want heavier paper also here to make the box stable.
 
-Alternatively, paper/art shops often sell finished boxes. You can't print custom image on them anymore, but they are sturdy.
+Alternatively, paper/craft/art shops often sell ready-made boxes. You can't print custom images on them, but they are sturdy.
 
 ## License
 
